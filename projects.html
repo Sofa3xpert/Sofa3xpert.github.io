@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects — Denis Baldakov</title>
+  <meta name="description" content="Technical projects by Denis Baldakov — computer vision, deep learning and LLM systems with code, demos and reports.">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+  <nav class="nav"><div class="container">
+    <a class="brand" href="index.html">Denis Baldakov</a>
+    <div class="links">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="research.html">Research</a>
+      <a href="cv.html">CV</a>
+    </div>
+  </div></nav>
+
+  <header class="hero" style="padding-bottom:20px;"><div class="container">
+    <h1>Projects</h1>
+    <p class="lead">Each project ships with real code, and where relevant a report or a working demo —
+      built to demonstrate technical depth, not just toy examples.</p>
+  </div></header>
+
+  <!-- ======================= FLAGSHIP with embedded demo ======================= -->
+  <section class="section" id="mental-health" style="padding-top:20px;"><div class="container">
+    <h2>AI Mental Health Assistant</h2>
+    <div class="media" style="margin-bottom:20px;">
+      <video controls preload="metadata" poster="">
+        <source src="files/mental_health_demo.mp4" type="video/mp4">
+        Your browser can't play this video — <a href="files/mental_health_demo.mp4">download it</a>.
+      </video>
+    </div>
+    <div class="prose">
+      <p>An end-to-end machine-learning pipeline for mental-health diagnosis and treatment support:
+        data cleaning and EDA, model training and evaluation (including a clinicalBERT-based text
+        model), delivered with a continuous-integration workflow, a written report, and the demo above.</p>
+      <ul>
+        <li>Data preparation, exploratory analysis and train/val/test splits over a clinical dataset</li>
+        <li>Diagnosis and medication/therapy-prediction models, including clinicalBERT for clinical text</li>
+        <li>Automated test pipeline via GitHub Actions</li>
+      </ul>
+    </div>
+    <div class="card-links" style="display:flex; gap:14px; font-weight:600;">
+      <a href="https://github.com/Sofa3xpert/ai-mental-health-assistant" target="_blank" rel="noopener">Code →</a>
+      <a href="research.html#report">Report →</a>
+    </div>
+  </div></section>
+
+  <!-- ======================= OTHER PROJECTS ======================= -->
+  <section class="section" style="padding-top:10px;"><div class="container">
+    <h2>More Projects</h2>
+    <div class="grid">
+
+      <!-- ADD A PROJECT: copy one <article class="card"> … </article> block and edit -->
+      <article class="card" id="active-learning">
+        <span class="tag">Deep Learning · Research</span>
+        <h3>Deep Active Learning on CIFAR-10</h3>
+        <p>Label-efficient image classification with a ResNet backbone, comparing selection
+          strategies (TypiClust on supervised embeddings) and reporting accuracy vs. labeling budget.</p>
+        <div class="tech"><span>PyTorch</span><span>torchvision</span><span>ResNet</span><span>Active Learning</span></div>
+        <div class="card-links">
+          <a href="https://github.com/Sofa3xpert/active-learning-cifar10" target="_blank" rel="noopener">Code</a>
+          <a href="research.html#notebooks">Notebook</a>
+        </div>
+      </article>
+
+      <article class="card" id="ros-robot">
+        <span class="tag">Computer Vision · Robotics</span>
+        <h3>Object Detection Robot</h3>
+        <p>ROS + LiDAR service robot that uses YOLO object detection to locate, collect and deliver
+          items autonomously through a state-machine of navigation nodes.</p>
+        <div class="tech"><span>Python</span><span>ROS</span><span>YOLO</span><span>LiDAR</span></div>
+        <div class="card-links">
+          <a href="https://github.com/Sofa3xpert/ros-object-detection-robot" target="_blank" rel="noopener">Code</a>
+        </div>
+      </article>
+
+      <article class="card" id="feature-eng">
+        <span class="tag">Data Science</span>
+        <h3>ML Feature Engineering</h3>
+        <p>Feature engineering, exploratory data analysis and model comparison on tabular data,
+          with reproducible evaluation notebooks.</p>
+        <div class="tech"><span>Python</span><span>pandas</span><span>scikit-learn</span><span>Jupyter</span></div>
+        <div class="card-links">
+          <a href="https://github.com/Sofa3xpert/ml-feature-engineering" target="_blank" rel="noopener">Code</a>
+          <a href="research.html#notebooks">Notebook</a>
+        </div>
+      </article>
+
+    </div>
+  </div></section>
+
+  <footer class="footer"><div class="container">
+    <span>© 2026 Denis Baldakov</span>
+    <span>
+      <a href="https://github.com/Sofa3xpert" target="_blank" rel="noopener">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/denis-baldakov2026" target="_blank" rel="noopener">LinkedIn</a> ·
+      <a href="mailto:denis1111baldakov@gmail.com">Email</a>
+    </span>
+  </div></footer>
+
+  <script src="assets/main.js"></script>
+</body>
+</html>

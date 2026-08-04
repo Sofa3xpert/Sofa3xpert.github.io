@@ -1,0 +1,162 @@
+/* ===========================================================================
+   Denis Baldakov — portfolio styles
+   Single shared stylesheet for every page. Edit colours/spacing in :root.
+   =========================================================================== */
+
+:root {
+  --bg:        #ffffff;
+  --surface:   #fafafa;
+  --border:    #e4e4e7;
+  --text:      #18181b;
+  --muted:     #52525b;
+  --accent:    #2557d6;
+  --accent-2:  #1a3fa0;
+  --maxw:      960px;
+  --radius:    12px;
+  --font: "Helvetica Neue", Arial, system-ui, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:      #0d0d10;
+    --surface: #16161b;
+    --border:  #2a2a31;
+    --text:    #ececee;
+    --muted:   #a1a1aa;
+    --accent:  #6a9bff;
+    --accent-2:#9cbcff;
+  }
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.container { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+/* ---- Navigation ---------------------------------------------------------- */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: saturate(160%) blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.nav .container {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 60px;
+}
+.nav .brand { font-weight: 700; font-size: 1.05rem; letter-spacing: -0.01em; color: var(--text); }
+.nav .links { display: flex; gap: 22px; }
+.nav .links a { color: var(--muted); font-size: 0.95rem; font-weight: 500; }
+.nav .links a:hover { color: var(--text); text-decoration: none; }
+.nav .links a.active { color: var(--text); }
+.nav .links a.active::after {
+  content: ""; display: block; height: 2px; background: var(--accent);
+  border-radius: 2px; margin-top: 3px;
+}
+
+/* ---- Section headers (CV-consistent: caps + rule) ------------------------ */
+.section { padding: 54px 0; }
+.section h2 {
+  font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--muted); font-weight: 700;
+  border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 26px;
+}
+
+/* ---- Hero ---------------------------------------------------------------- */
+.hero { padding: 72px 0 40px; }
+.hero h1 { font-size: 2.7rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
+.hero .role { font-size: 1.2rem; color: var(--accent); font-weight: 600; margin-top: 6px; }
+.hero p.lead { font-size: 1.1rem; color: var(--muted); max-width: 620px; margin-top: 18px; }
+.hero .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+
+/* ---- Buttons ------------------------------------------------------------- */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 18px; border-radius: 999px; font-weight: 600; font-size: 0.95rem;
+  border: 1px solid var(--border); background: var(--surface); color: var(--text);
+  transition: transform .12s ease, border-color .12s ease, background .12s ease;
+}
+.btn:hover { text-decoration: none; transform: translateY(-1px); border-color: var(--accent); }
+.btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+.btn.primary:hover { background: var(--accent-2); border-color: var(--accent-2); }
+
+/* ---- Stat row ------------------------------------------------------------ */
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 8px; }
+.stat { border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; background: var(--surface); }
+.stat .n { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; }
+.stat .l { color: var(--muted); font-size: 0.9rem; margin-top: 2px; }
+
+/* ---- Cards (projects / papers) ------------------------------------------- */
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.card {
+  border: 1px solid var(--border); border-radius: var(--radius);
+  background: var(--surface); padding: 22px; display: flex; flex-direction: column;
+  transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
+}
+.card:hover { transform: translateY(-3px); border-color: var(--accent); box-shadow: 0 8px 30px rgba(0,0,0,.06); }
+.card .tag { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); font-weight: 700; }
+.card h3 { font-size: 1.2rem; margin: 8px 0 6px; letter-spacing: -0.01em; }
+.card p { color: var(--muted); font-size: 0.96rem; flex: 1; }
+.card .tech { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 4px; }
+.card .tech span {
+  font-size: 0.75rem; color: var(--muted); border: 1px solid var(--border);
+  border-radius: 6px; padding: 2px 8px; background: var(--bg);
+}
+.card .card-links { display: flex; gap: 14px; margin-top: 16px; font-size: 0.9rem; font-weight: 600; }
+.card .card-links a::before { content: "→ "; color: var(--muted); }
+
+/* ---- Featured media (video / report) ------------------------------------- */
+.media { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: #000; }
+.media video { width: 100%; display: block; }
+.embed-pdf { width: 100%; height: 80vh; border: 1px solid var(--border); border-radius: var(--radius); }
+
+/* ---- Journey (scaffold for the future animated world map) ---------------- */
+#journey .map-slot {
+  position: relative; border: 1px dashed var(--border); border-radius: var(--radius);
+  background: var(--surface); min-height: 120px; margin-bottom: 26px;
+  display: flex; align-items: center; justify-content: center; color: var(--muted);
+  font-size: 0.9rem; text-align: center; padding: 20px;
+}
+.timeline { position: relative; padding-left: 26px; }
+.timeline::before { content: ""; position: absolute; left: 7px; top: 4px; bottom: 4px; width: 2px; background: var(--border); }
+.tl-item { position: relative; padding: 0 0 22px 4px; opacity: 0; transform: translateY(10px); }
+.tl-item.in { opacity: 1; transform: none; transition: opacity .5s ease, transform .5s ease; }
+.tl-item::before {
+  content: ""; position: absolute; left: -23px; top: 6px; width: 12px; height: 12px;
+  border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+.tl-item .when { font-size: 0.8rem; color: var(--muted); }
+.tl-item .what { font-weight: 700; margin-top: 1px; }
+.tl-item .where { color: var(--muted); font-size: 0.92rem; }
+
+/* ---- Footer -------------------------------------------------------------- */
+.footer { border-top: 1px solid var(--border); margin-top: 40px; padding: 34px 0; color: var(--muted); font-size: 0.92rem; }
+.footer .container { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; }
+.footer a { color: var(--muted); }
+.footer a:hover { color: var(--text); }
+
+/* ---- Prose (research write-ups) ------------------------------------------ */
+.prose p { color: var(--muted); margin-bottom: 14px; max-width: 680px; }
+.prose ul { color: var(--muted); margin: 0 0 16px 22px; }
+.prose li { margin-bottom: 6px; }
+
+/* ---- Responsive ---------------------------------------------------------- */
+@media (max-width: 720px) {
+  .hero h1 { font-size: 2.1rem; }
+  .grid, .stats { grid-template-columns: 1fr; }
+  .nav .links { gap: 16px; }
+  .nav .brand { font-size: 0.98rem; }
+}
