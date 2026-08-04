@@ -130,6 +130,82 @@ a:hover { text-decoration: underline; }
   display: flex; align-items: center; justify-content: center; color: var(--muted);
   font-size: 0.9rem; text-align: center; padding: 20px;
 }
+/* --- animated world map (JS-enhanced; falls back to the dashed slot) ------- */
+#world-map.wm {
+  border: 1px solid #1b1b22;
+  border-radius: var(--radius);
+  background: radial-gradient(125% 150% at 50% 4%, #16161d 0%, #0b0b0f 55%, #060608 100%);
+  padding: 0; min-height: 0; overflow: hidden; display: block;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.03);
+}
+.wm-svg { width: 100%; height: auto; display: block; opacity: 0; transition: opacity .8s ease; }
+.wm-svg.in { opacity: 1; }
+
+/* land: white silhouette on the dark panel */
+.wm-land path {
+  fill: #eceef3; fill-opacity: .92;
+  stroke: #0a0a0c; stroke-width: .5; vector-effect: non-scaling-stroke;
+}
+
+/* markers */
+.wm-markers { filter: drop-shadow(0 0 4px color-mix(in srgb, var(--accent) 70%, transparent)); }
+.wm-pin .wm-dot {
+  fill: #ffffff; stroke: var(--accent); stroke-width: 2;
+  opacity: 0; transform: scale(0);
+  transform-box: fill-box; transform-origin: center;
+}
+.wm-svg.in .wm-pin .wm-dot {
+  animation: wm-pop .5s cubic-bezier(.2,1.3,.4,1) forwards;
+  animation-delay: calc(.5s + var(--i) * .35s);
+}
+@keyframes wm-pop { to { opacity: 1; transform: scale(1); } }
+
+.wm-pin .wm-ping {
+  fill: none; stroke: var(--accent); stroke-width: 1.5; opacity: 0;
+  transform-box: fill-box; transform-origin: center;
+}
+.wm-svg.in .wm-pin .wm-ping {
+  animation: wm-ping 2.6s ease-out infinite;
+  animation-delay: calc(1s + var(--i) * .35s);
+}
+@keyframes wm-ping {
+  0%   { opacity: .5;  transform: scale(.4); }
+  70%  { opacity: 0;   transform: scale(3.4); }
+  100% { opacity: 0;   transform: scale(3.4); }
+}
+
+/* flight-path arcs (draw-on; delay set inline per arc in worldmap.js) */
+.wm-arc {
+  fill: none; stroke: var(--accent); stroke-width: 1.8; stroke-linecap: round;
+  vector-effect: non-scaling-stroke; opacity: .9;
+  filter: drop-shadow(0 0 3px color-mix(in srgb, var(--accent) 60%, transparent));
+}
+.wm-svg.in .wm-arc { animation: wm-draw 1s ease forwards; }
+@keyframes wm-draw { to { stroke-dashoffset: 0; } }
+
+/* labels */
+.wm-label { opacity: 0; }
+.wm-svg.in .wm-label { animation: wm-fade .6s ease forwards; animation-delay: calc(.75s + var(--i) * .35s); }
+@keyframes wm-fade { to { opacity: 1; } }
+.wm-label text {
+  font-family: var(--font);
+  paint-order: stroke; stroke: #060608; stroke-width: 3px; stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.wm-city { fill: #f4f5f8; font-size: 15px; font-weight: 700; }
+.wm-meta { fill: #aeb4c0; font-size: 12px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .wm-svg, .wm-svg.in .wm-pin .wm-dot, .wm-svg.in .wm-pin .wm-ping,
+  .wm-svg.in .wm-arc, .wm-svg.in .wm-label { animation: none !important; transition: none !important; opacity: 1 !important; }
+  .wm-svg.in .wm-pin .wm-dot { transform: scale(1); }
+  .wm-svg.in .wm-arc { stroke-dashoffset: 0 !important; }
+}
+@media (max-width: 720px) {
+  .wm-city { font-size: 20px; }
+  .wm-meta { font-size: 16px; }
+}
+
 .timeline { position: relative; padding-left: 26px; }
 .timeline::before { content: ""; position: absolute; left: 7px; top: 4px; bottom: 4px; width: 2px; background: var(--border); }
 .tl-item { position: relative; padding: 0 0 22px 4px; opacity: 0; transform: translateY(10px); }

@@ -50,6 +50,33 @@
     </div>
   </div></section>
 
+  <!-- ======================= DISSERTATION with embedded demo ======================= -->
+  <section class="section" id="slm-tests" style="padding-top:10px;"><div class="container">
+    <h2>Dissertation — Self-Hosted LLMs for Unit-Test Generation</h2>
+    <div class="media" style="margin-bottom:20px;">
+      <video controls preload="metadata" poster="">
+        <source src="files/dissertation_demo.mp4" type="video/mp4">
+        Your browser can't play this video — <a href="files/dissertation_demo.mp4">download it</a>.
+      </video>
+    </div>
+    <div class="prose">
+      <p>My undergraduate dissertation: a multi-agent pipeline that generates unit tests for code, built to
+        test whether small, self-hosted language models can rival a frontier model. A <strong>Programmer</strong>
+        agent proposes a reference solution, a safety filter strips unsafe code, and a <strong>Tester</strong>
+        agent writes the test suite — the same pipeline drives four quantised SLMs (Mistral-Small,
+        DeepSeek-Coder, Llama-3.1, Nemotron-Mini) via LM Studio and Claude via the Anthropic SDK.</p>
+      <ul>
+        <li>Benchmarked on HumanEval &amp; MBPP with line coverage, mutation score and functional accuracy</li>
+        <li>Honest-by-default scoring: an empty-suite filter stops assertion-free tests scoring a trivial pass</li>
+        <li>Every run persisted as a JSON artefact; headline numbers come from a rescored 25-task evaluation</li>
+      </ul>
+    </div>
+    <div class="card-links" style="display:flex; gap:14px; font-weight:600;">
+      <a href="https://github.com/Sofa3xpert/slm-unit-test-generation" target="_blank" rel="noopener">Code →</a>
+      <a href="research.html#notebooks">Notebook →</a>
+    </div>
+  </div></section>
+
   <!-- ======================= OTHER PROJECTS ======================= -->
   <section class="section" style="padding-top:10px;"><div class="container">
     <h2>More Projects</h2>
@@ -88,6 +115,17 @@
         <div class="card-links">
           <a href="https://github.com/Sofa3xpert/ml-feature-engineering" target="_blank" rel="noopener">Code</a>
           <a href="research.html#notebooks">Notebook</a>
+        </div>
+      </article>
+
+      <article class="card" id="yolo-mlops">
+        <span class="tag">MLOps · Cloud</span>
+        <h3>YOLOv5 + MLflow Microservices</h3>
+        <p>Containerised MLOps platform: a YOLOv5 object-detection service with MLflow experiment
+          tracking and MongoDB, orchestrated with Docker Compose and deployed to Kubernetes.</p>
+        <div class="tech"><span>FastAPI</span><span>YOLOv5</span><span>MLflow</span><span>Docker</span><span>Kubernetes</span></div>
+        <div class="card-links">
+          <a href="https://github.com/Sofa3xpert/yolo-mlflow-microservices" target="_blank" rel="noopener">Code</a>
         </div>
       </article>
 
