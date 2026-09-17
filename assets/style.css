@@ -118,6 +118,9 @@ a:hover { text-decoration: underline; }
 .card:hover { transform: translateY(-3px); border-color: var(--accent); box-shadow: 0 8px 30px rgba(0,0,0,.06); }
 .card .tag { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); font-weight: 700; }
 .card h3 { font-size: 1.2rem; margin: 8px 0 6px; letter-spacing: -0.01em; }
+.card .card-head { display: flex; align-items: center; gap: 12px; margin: 8px 0 6px; }
+.card .card-head h3 { margin: 0; }
+.card .card-icon { width: 40px; height: 40px; border-radius: 10px; flex: none; }
 .card p { color: var(--muted); font-size: 0.96rem; flex: 1; }
 .card .tech { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 4px; }
 .card .tech span {
